@@ -170,7 +170,7 @@ IndHousEthn <- Indhous %>% left_join(Stable2, by = ("pidp")) %>% filter( racel_d
 TableNkids <- IndHousEthn %>% mutate(EgoRace = case_when( racel_dv == 1 ~ "white british", racel_dv == 9 ~ "Indian", racel_dv == 10 ~ "Pakistani" )) %>% group_by(EgoRace) %>% filter(h_nkids_dv != "NA_character_") %>% left_join(Stable2, by = c("apidp" = "pidp"))  %>%filter( racel_dv.y == 1 | racel_dv.y == 9 | racel_dv.y == 10 ) %>% mutate(AlterRace = case_when( racel_dv.y == 1 ~ "white british", racel_dv.y == 9 ~ "Indian", racel_dv.y == 10 ~ "Pakistani" )) %>% filter(EgoRace == AlterRace) %>%  group_by(EgoRace) %>% count(EgoRace,AlterRace, h_nkids_dv) %>% mutate(AvgKids = mean(h_nkids_dv)) %>% mutate(MedianKids = median(h_nkids_dv))
 
 TableNkids
-#Partners8 was not used in order to account for same sex couples
+#Partners8 was not used in order to account for same sex couples..
 
 
 ```
